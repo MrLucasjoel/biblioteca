@@ -22,8 +22,8 @@ aplicacao.use((requisicao, resposta, proximo) => {
 // --- Configuração de Conexão com Banco de Dados ---
 const configuracaoBD = {
   host: '127.0.0.1',
-  user: 'livros',
-  password: 'senha',
+  user: 'lucas',
+  password: '1234',
   database: 'biblioteca',
   waitForConnections: true,
   connectionLimit: 10,
