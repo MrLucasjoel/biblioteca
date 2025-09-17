@@ -1,20 +1,41 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// ARQUIVO: App.js
+
+import 'react-native-gesture-handler';
+import React from 'react';
+import { NavigationContainer} from '@react-navigation/native';
+import { createNativeStackNavigator} from '@react-navigation/native-stack';
+import TelaListaLivros from './src/telas/TelaListaLivros';
+import TelaDetalheLivro from './src/telas/TelaDetalheLivro';
+import TelaCriarLivro from './src/telas/TelaCriarLivro';
+
+const Pilha = createNativeStackNavigator(); // Usando Pilha para Stack
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Pilha.Navigator initialRouteName="ListaLivros">
+        <Pilha.Screen
+          name="ListaLivros"
+          component={TelaListaLivros}
+          options={{
+            title: 'Lista de Livros'
+          }}
+        />
+        <Pilha.Screen
+          name="DetalheLivro"
+          component={TelaDetalheLivro}
+          options={{
+            title: 'Detalhes e Edição'
+          }}
+        />
+        <Pilha.Screen
+          name="CriarLivro"
+          component={TelaCriarLivro}
+          options={{
+            title: 'Novo Livro'
+          }}
+        />
+      </Pilha.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
